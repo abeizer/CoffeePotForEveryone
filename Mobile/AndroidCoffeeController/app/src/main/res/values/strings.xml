@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">CoffeeController</string>
+
+    <!-- App -->
+    <string name="app_name">Coffee Controller</string>
+
+    <!-- "Brew Now" Tab -->
+    <string name="tab_brew_now">Brew Now</string>
+    <string name="button_text_brew_now">Start Brewing Now</string>
+
+    <!-- "Brew Later" Tab -->
+    <string name="tab_brew_later">Brew Later</string>
+    <string name="button_text_brew_later">Schedule Brewing for Later</string>
+    <string name="button_text_brew_later_cancel">Cancel Future Brew</string>
+
+
+
 </resources>
