@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- App -->
+    <string name="app_name">CoffeeController</string>
+    <string name="header_image_content">App Header Image</string>
+
+    <!-- Tabs -->
+    <string name="tab_brew_now">Brew Now</string>
+    <string name="tab_brew_later">Brew Later</string>
+
+</resources>
