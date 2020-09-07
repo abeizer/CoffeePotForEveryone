@@ -3,7 +3,12 @@ package com.everyone.coffeecontroller;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -21,10 +26,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Update connection status text
+        final TextView connectionStatus = findViewById(R.id.connectionStatusValue);
+        final ImageButton connectionSyncButton = findViewById(R.id.connectionStatusSyncButton);
+        // TODO: see if the board can actually establish a connection
+        connectionStatus.setText(R.string.connection_OK);
+        connectionStatus.setTextColor(Color.GREEN);
+
+        // add a click event to the sync button to query connection status
+        // TODO: for now this just toggles between status of OK and OFFLINE
+        connectionSyncButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(connectionStatus.getText().toString().equals(getString(R.string.connection_OK)))
+                {
+                    connectionStatus.setText(R.string.connection_OFFLINE);
+                    connectionStatus.setTextColor(Color.RED);
+                }
+                else
+                {
+                    connectionStatus.setText(R.string.connection_OK);
+                    connectionStatus.setTextColor(Color.GREEN);
+                }
+
+            }
+        });
+
         // Init tab-bar and its individual tabs
-        TabLayout tabBar = findViewById(R.id.tabBar);
-        TabItem tabBrewNow = findViewById(R.id.tabBrewNow);
-        TabItem tabBrewLater = findViewById(R.id.tabBrewLater);
+        final TabLayout tabBar = findViewById(R.id.tabBar);
+        final TabItem tabBrewNow = findViewById(R.id.tabBrewNow);
+        final TabItem tabBrewLater = findViewById(R.id.tabBrewLater);
 
         // Init viewPager + pagerAdapter for swiping between tabs
         final ViewPager viewPager = findViewById(R.id.viewPager);

@@ -7,14 +7,58 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Tabs Container -->
+    <!-- Connection Status Container -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/connectionStatusContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/connectionStatusText"
+                android:layout_width="228dp"
+                android:layout_height="74dp"
+                android:fontFamily="serif-monospace"
+                android:gravity="center"
+                android:text="@string/connection_status_text"
+                android:textSize="18sp"
+                android:typeface="normal" />
+
+            <TextView
+                android:id="@+id/connectionStatusValue"
+                android:layout_width="63dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="serif-monospace"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/connectionStatusSyncButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/connection_sync" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Tab Layout -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabBar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/connectionStatusContainer">
 
         <!-- "Brew Now" Tab -->
         <com.google.android.material.tabs.TabItem
@@ -32,7 +76,7 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <!-- Add a ViewPager to swipe between tabs using gestures -->
+    <!-- Add a ViewPager to transition between tab fragments -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="0dp"
@@ -40,6 +84,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabBar" />
+        app:layout_constraintTop_toBottomOf="@+id/connectionStatusContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

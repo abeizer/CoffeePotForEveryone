@@ -2,6 +2,11 @@
 
     <!-- App -->
     <string name="app_name">Coffee Controller</string>
+    <string name="connection_status_text">Connection Status:</string>
+
+    <!-- Connection Status -->
+    <string name="connection_OK">OK</string>
+    <string name="connection_OFFLINE">Offline</string>
 
     <!-- "Brew Now" Tab -->
     <string name="tab_brew_now">Brew Now</string>
