@@ -11,10 +11,11 @@ The app will assume that the coffee-maker contains the proper amount of water an
 ## Mobile Application
 The mobile application will be available for both Android and iOS.
 
-[Android Studio](https://developer.android.com/studio) will be used for Android app development. Supports Oreo (8.0) and later.
+[Android Studio](https://developer.android.com/studio) will be used for Android app development. Supports Nougat (7.0) and later.
 
 iOS development environment TBD.
 
 ## Hardware
 Coffee Pot: TBD
+
 Board: TBD
