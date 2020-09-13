@@ -1,5 +1,6 @@
 package com.everyone.coffeecontroller;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,7 +13,9 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.time.LocalTime;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The "Brew Later" tab allows the user to schedule a time in the future for the
@@ -24,7 +27,6 @@ public class BrewLaterFragment extends Fragment {
     private Button scheduleBrewButton;
     private Button cancelScheduledBrewButton;
     private boolean brewScheduled = false;
-    private LocalTime scheduledTime = null;
 
     // Constructor
     public BrewLaterFragment() {
@@ -50,21 +52,27 @@ public class BrewLaterFragment extends Fragment {
         this.timePicker = view.findViewById(R.id.timePicker);
         this.scheduleBrewButton = view.findViewById(R.id.scheduleBrewButton);
         this.cancelScheduledBrewButton = view.findViewById(R.id.cancelScheduledBrewButton);
-        this.timePicker.setHour(LocalTime.now().getHour());
-        this.timePicker.setMinute(LocalTime.now().getMinute());
+        this.timePicker.setHour(Calendar.getInstance().getTime().getHours());
+        this.timePicker.setMinute(Calendar.getInstance().getTime().getMinutes());
         this.updateDisplay();
 
         // Set up our button listeners
         scheduleBrewButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SimpleDateFormat")
             @Override
             public void onClick(View view) {
                 brewScheduled = true;
-                scheduledTime = LocalTime.of(timePicker.getHour(), timePicker.getMinute());
+
+                final Date date = new Date()
+                {{
+                    setHours(timePicker.getHour());
+                    setMinutes(timePicker.getMinute());
+                }};
+                final String scheduledTime = new SimpleDateFormat("hh:mm a").format(date);
                 updateDisplay();
 
                 // Show a toast message
-                // TODO: format 24hr --> 12 hr, or "scheduled to start in x hrs/minutes"
-                String toastString = "Coffee Scheduled for " + scheduledTime.toString();
+                String toastString = "Coffee Scheduled for " + scheduledTime;
                 Toast.makeText(view.getContext(), toastString, Toast.LENGTH_SHORT).show();
             }
         });
